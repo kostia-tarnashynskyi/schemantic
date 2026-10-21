@@ -1,0 +1,35 @@
+{
+    "name": "@schemantic/protoc-gen",
+    "version": "0.0.0",
+    "description": "protoc plugin that generates Schemantic schemas from .proto files",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kostia-tarnashynskyi/schemantic.git",
+        "directory": "packages/protoc-gen"
+    },
+    "type": "module",
+    "bin": {
+        "protoc-gen-schemantic": "./dist/index.js"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "engines": {
+        "node": ">=24"
+    },
+    "scripts": {
+        "build": "vite build && tsc -p tsconfig.build.json"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

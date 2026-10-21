@@ -1,0 +1,35 @@
+language: en-US
+tone_instructions: "Be direct and concise. Explain why, suggest a fix."
+
+reviews:
+    profile: chill
+    request_changes_workflow: false
+    high_level_summary: true
+    auto_review:
+        enabled: true
+        drafts: false
+        base_branches:
+            - "^main$"
+    path_filters:
+        - "!**/dist/**"
+    path_instructions:
+        - path: "packages/*/src/**"
+          instructions: >-
+              Check naming (full words, booleans is/has/can, units in names), one type per file,
+              early returns, nesting depth and complexity limits from docs/contributing/code-style.md,
+              no `any`, TSDoc with @example on every public export.
+        - path: "packages/*/tests/**"
+          instructions: >-
+              Tests must check behavior of the public API, not implementation details. No runner-specific
+              mocks in shared tests. Test names follow "should <result> when <condition>". Prefer
+              factories over inline objects.
+    tools:
+        biome:
+            enabled: true
+
+knowledge_base:
+    code_guidelines:
+        enabled: true
+        filePatterns:
+            - "AGENTS.md"
+            - "CONTRIBUTING.md"
