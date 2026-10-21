@@ -1,0 +1,32 @@
+{
+    "name": "@schemantic/config",
+    "version": "0.0.0",
+    "description": "Config loading for Schemantic schemas: YAML and environment variables",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kostia-tarnashynskyi/schemantic.git",
+        "directory": "packages/config"
+    },
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "engines": {
+        "node": ">=24"
+    },
+    "scripts": {
+        "build": "vite build && tsc -p tsconfig.build.json"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

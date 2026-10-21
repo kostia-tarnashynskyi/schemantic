@@ -1,0 +1,36 @@
+{
+    "name": "@schemantic/typebox",
+    "version": "0.0.0",
+    "description": "TypeBox adapter for Schemantic",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kostia-tarnashynskyi/schemantic.git",
+        "directory": "packages/typebox"
+    },
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        },
+        "./package.json": "./package.json"
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "engines": {
+        "node": ">=24"
+    },
+    "peerDependencies": {
+        "@schemantic/core": "^0.0.0",
+        "typebox": "^1.4.2"
+    },
+    "scripts": {
+        "build": "vite build && tsc -p tsconfig.build.json"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

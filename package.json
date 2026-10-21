@@ -1,0 +1,30 @@
+{
+    "name": "schemantic",
+    "private": true,
+    "type": "module",
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "lint": "biome check .",
+        "lint:fix": "biome check --write .",
+        "typecheck": "tsc --noEmit",
+        "build": "bun run --filter '@schemantic/*' build",
+        "test": "bun test",
+        "test:node": "vitest run",
+        "test:types": "vitest run --typecheck",
+        "test:coverage": "bun test --coverage",
+        "prepare": "husky"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.6.2",
+        "@commitlint/cli": "21.2.4",
+        "@commitlint/config-conventional": "21.2.4",
+        "bun-types": "1.4.3",
+        "husky": "9.1.7",
+        "lint-staged": "17.6.0",
+        "typescript": "7.0.2",
+        "vite": "8.3.5",
+        "vitest": "5.0.5"
+    }
+}
