@@ -1,6 +1,13 @@
-branch="$(git rev-parse --abbrev-ref HEAD)"
+# Git passes the refs being pushed on stdin: <local ref> <local sha> <remote ref> <remote sha>
 pattern='^(feat|fix|refactor|perf|docs|test|ci|chore)/[a-z0-9-]+$'
-if ! echo "$branch" | grep -qE "$pattern"; then
-  echo "Branch '$branch' does not match <type>/<short-description>, e.g. feat/standard-schema"
-  exit 1
-fi
+while read -r local_ref local_sha remote_ref remote_sha; do
+  case "$remote_ref" in
+    refs/heads/*) ;;
+    *) continue ;;
+  esac
+  branch="${remote_ref#refs/heads/}"
+  if ! echo "$branch" | grep -qE "$pattern"; then
+    echo "Branch '$branch' does not match <type>/<short-description>, e.g. feat/standard-schema"
+    exit 1
+  fi
+done
